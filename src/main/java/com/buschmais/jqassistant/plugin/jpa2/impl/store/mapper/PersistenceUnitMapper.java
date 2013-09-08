@@ -1,17 +1,18 @@
-package com.buschmais.jqassistant.plugin.jpa2.impl.store;
+package com.buschmais.jqassistant.plugin.jpa2.impl.store.mapper;
 
 import com.buschmais.jqassistant.core.model.api.descriptor.Descriptor;
-import com.buschmais.jqassistant.core.model.api.descriptor.TypeDescriptor;
 import com.buschmais.jqassistant.core.store.api.model.IndexedLabel;
 import com.buschmais.jqassistant.core.store.impl.dao.mapper.AbstractDescriptorMapper;
+import com.buschmais.jqassistant.plugin.java.impl.store.descriptor.TypeDescriptor;
+import com.buschmais.jqassistant.plugin.jpa2.impl.store.descriptor.PersistenceUnitDescriptor;
 import org.neo4j.graphdb.Label;
 import org.neo4j.graphdb.RelationshipType;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.buschmais.jqassistant.plugin.jpa2.impl.store.Jpa2Label.JPA;
-import static com.buschmais.jqassistant.plugin.jpa2.impl.store.Jpa2Label.PERSISTENCEUNIT;
+import static com.buschmais.jqassistant.plugin.jpa2.impl.store.mapper.Jpa2Label.JPA;
+import static com.buschmais.jqassistant.plugin.jpa2.impl.store.mapper.Jpa2Label.PERSISTENCEUNIT;
 
 /**
  * {@link AbstractDescriptorMapper} for {@PersistenceUnitDescriptor}s.

@@ -1,4 +1,4 @@
-package com.buschmais.jqassistant.plugin.jpa2.impl.store;
+package com.buschmais.jqassistant.plugin.jpa2.impl.store.mapper;
 
 import com.buschmais.jqassistant.core.store.api.model.IndexedLabel;
 
