@@ -1,11 +1,11 @@
-package com.buschmais.jqassistant.plugin.jpa2.impl.store.descriptor;
+package com.buschmais.jqassistant.plugin.jpa2.api.model;
 
 import java.util.Set;
 
 import com.buschmais.jqassistant.core.store.api.descriptor.Descriptor;
 import com.buschmais.jqassistant.core.store.api.descriptor.NamedDescriptor;
-import com.buschmais.jqassistant.plugin.java.impl.store.descriptor.PropertyDescriptor;
-import com.buschmais.jqassistant.plugin.java.impl.store.descriptor.TypeDescriptor;
+import com.buschmais.jqassistant.plugin.java.api.model.PropertyDescriptor;
+import com.buschmais.jqassistant.plugin.java.api.model.TypeDescriptor;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Property;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
