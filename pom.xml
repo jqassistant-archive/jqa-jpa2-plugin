@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.buschmais.jqassistant.plugin</groupId>
-    <artifactId>jqa-jpa2-plugin</artifactId>
+    <artifactId>jpa2</artifactId>
 
     <build>
         <plugins>
