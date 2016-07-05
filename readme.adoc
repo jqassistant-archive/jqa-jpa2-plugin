@@ -1,7 +1,7 @@
-= jQAssistant Java Plugin
+= jQAssistant JPA 2 Plugin
 
 This is the JPA 2 Plugin of https://www.jqassistant.org[jQAssistant^].
-It enables jQAssistant to scan and to analyze JUnit related
+It enables jQAssistant to scan and to analyze JPA related
 artifacts like:
 
 - entities
