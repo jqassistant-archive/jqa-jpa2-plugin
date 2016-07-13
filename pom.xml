@@ -12,6 +12,7 @@
 
     <groupId>com.buschmais.jqassistant.plugin</groupId>
     <artifactId>jpa2</artifactId>
+    <name>jQAssistant JPA 2 Plugin</name>
 
     <build>
         <plugins>
