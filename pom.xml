@@ -15,6 +15,7 @@
     <version>1.2-SNAPSHOT</version>
 
     <name>jQAssistant JPA 2 Plugin</name>
+    <url>http://jqassistant.org/</url>
 
     <organization>
         <name>buschmais GbR</name>
@@ -27,6 +28,12 @@
             <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
         </license>
     </licenses>
+
+    <description>
+        Plugin for jQAssistant to be able to scan and to
+        analyze JPA 2 related artifacts.
+    </description>
+
 
     <build>
         <plugins>
