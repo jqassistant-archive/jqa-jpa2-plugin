@@ -34,6 +34,12 @@
         analyze JPA 2 related artifacts.
     </description>
 
+    <scm>
+        <connection>scm:git:git@github.com:buschmais/jqa-jpa2-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:buschmais/jqa-jpa2-plugin.git</developerConnection>
+        <url>https://github.com/buschmais/jqa-jpa2-plugin</url>
+    </scm>
+
     <properties>
         <jqa-java-plugin.version>1.2-SNAPSHOT</jqa-java-plugin.version>
         <jqa-plugin-common.version>1.2-SNAPSHOT</jqa-plugin-common.version>
