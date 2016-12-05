@@ -1,10 +1,12 @@
 package com.buschmais.jqassistant.plugin.jpa2.impl.scanner;
 
+import com.buschmais.jqassistant.core.shared.annotation.PublicApi;
+import com.sun.java.xml.ns.persistence.Persistence;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.java.xml.ns.persistence.Persistence;
-
+@PublicApi
 public class PersistenceView {
     private Persistence persistenceV20;
     private org.jcp.xmlns.xml.ns.persistence.Persistence persistenceV21;

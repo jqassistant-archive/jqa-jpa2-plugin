@@ -1,0 +1,6 @@
+
+= jQAssistant JPA 2 Plugin Release Notes
+
+include::1.2.adoc[]
+
+
