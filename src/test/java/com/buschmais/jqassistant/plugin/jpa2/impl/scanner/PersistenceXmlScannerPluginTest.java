@@ -6,10 +6,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,6 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import com.buschmais.jqassistant.core.shared.mockito.MethodNotMockedAnswer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +26,6 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
-import com.buschmais.jqassistant.core.analysis.api.rule.source.FileRuleSourceTest;
 import com.buschmais.jqassistant.core.scanner.api.Scanner;
 import com.buschmais.jqassistant.core.scanner.api.ScannerContext;
 import com.buschmais.jqassistant.core.scanner.api.Scope;
@@ -158,7 +155,7 @@ public class PersistenceXmlScannerPluginTest {
 
     @Test
     public void scannerAcceptsIfInClasspathScope() throws IOException {
-        FileResource item = Mockito.mock(FileResource.class, new FileRuleSourceTest.MethodNotMockedAnswer());
+        FileResource item = Mockito.mock(FileResource.class, new MethodNotMockedAnswer());
         String path = "/META-INF/persistence.xml";
         Scope scope = JavaScope.CLASSPATH;
 
@@ -167,7 +164,7 @@ public class PersistenceXmlScannerPluginTest {
 
     @Test
     public void scannerAcceptsIfPersistenceXMLIsInMETAINF() throws Exception {
-        FileResource item = Mockito.mock(FileResource.class, new FileRuleSourceTest.MethodNotMockedAnswer());
+        FileResource item = Mockito.mock(FileResource.class, new MethodNotMockedAnswer());
         String path = "/META-INF/persistence.xml";
         Scope scope = JavaScope.CLASSPATH;
 
@@ -177,7 +174,7 @@ public class PersistenceXmlScannerPluginTest {
 
     @Test
     public void scannerAcceptsIfPersistenceXMLIsInWEBINF() throws Exception {
-        FileResource item = Mockito.mock(FileResource.class, new FileRuleSourceTest.MethodNotMockedAnswer());
+        FileResource item = Mockito.mock(FileResource.class, new MethodNotMockedAnswer());
         String path = "/WEB-INF/persistence.xml";
         Scope scope = JavaScope.CLASSPATH;
 
