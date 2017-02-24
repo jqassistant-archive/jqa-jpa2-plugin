@@ -100,7 +100,7 @@
             MATCH
               (pu:PersistenceUnit)
             WHERE
-              not has(pu.validationMode)
+              not exists(pu.validationMode)
               OR NOT (
                 pu.validationMode='CALLBACK'
                 OR pu.validationMode='NONE'
