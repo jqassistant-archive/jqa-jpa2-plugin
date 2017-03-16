@@ -15,7 +15,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import com.buschmais.jqassistant.core.shared.mockito.MethodNotMockedAnswer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +28,7 @@ import org.mockito.stubbing.Answer;
 import com.buschmais.jqassistant.core.scanner.api.Scanner;
 import com.buschmais.jqassistant.core.scanner.api.ScannerContext;
 import com.buschmais.jqassistant.core.scanner.api.Scope;
+import com.buschmais.jqassistant.core.shared.mockito.MethodNotMockedAnswer;
 import com.buschmais.jqassistant.core.store.api.Store;
 import com.buschmais.jqassistant.plugin.common.api.model.FileDescriptor;
 import com.buschmais.jqassistant.plugin.common.api.model.PropertyDescriptor;
@@ -146,7 +146,7 @@ public class PersistenceXmlScannerPluginTest {
                 eq(context));
         doReturn(typeResolver).when(context).peek(TypeResolver.class);
         doReturn(context).when(scanner).getContext();
-        doReturn(fileDescriptor).when(context).peek(FileDescriptor.class);
+        doReturn(fileDescriptor).when(context).getCurrentDescriptor();
         doReturn(persistenceDescriptor).when(store).addDescriptorType(fileDescriptor, PersistenceXmlDescriptor.class);
         doReturn(persistenceUnitList).when(persistenceDescriptor).getContains();
         doReturn(true).when(persistenceDescriptor).isXmlWellFormed();
