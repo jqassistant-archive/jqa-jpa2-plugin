@@ -1,10 +1,10 @@
 package com.buschmais.jqassistant.plugin.jpa2.test.matcher;
 
+import com.buschmais.jqassistant.plugin.jpa2.api.model.PersistenceUnitDescriptor;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-
-import com.buschmais.jqassistant.plugin.jpa2.api.model.PersistenceUnitDescriptor;
 
 /**
  * A matcher for {@link PersistenceUnitDescriptor}s.

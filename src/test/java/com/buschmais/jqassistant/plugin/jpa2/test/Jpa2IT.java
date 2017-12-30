@@ -1,5 +1,26 @@
 package com.buschmais.jqassistant.plugin.jpa2.test;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.buschmais.jqassistant.core.analysis.api.Result;
+import com.buschmais.jqassistant.core.analysis.api.rule.Constraint;
+import com.buschmais.jqassistant.plugin.common.api.model.PropertyDescriptor;
+import com.buschmais.jqassistant.plugin.java.test.AbstractJavaPluginIT;
+import com.buschmais.jqassistant.plugin.jpa2.api.model.PersistenceUnitDescriptor;
+import com.buschmais.jqassistant.plugin.jpa2.api.model.PersistenceXmlDescriptor;
+import com.buschmais.jqassistant.plugin.jpa2.test.matcher.PersistenceUnitMatcher;
+import com.buschmais.jqassistant.plugin.jpa2.test.set.entity.JpaEmbeddable;
+import com.buschmais.jqassistant.plugin.jpa2.test.set.entity.JpaEntity;
+import com.buschmais.jqassistant.plugin.jpa2.test.set.entity.SingleNamedQueryEntity;
+
+import org.hamcrest.Matcher;
+import org.junit.Test;
+
 import static com.buschmais.jqassistant.core.analysis.api.Result.Status.FAILURE;
 import static com.buschmais.jqassistant.core.analysis.api.Result.Status.SUCCESS;
 import static com.buschmais.jqassistant.core.analysis.test.matcher.ConstraintMatcher.constraint;
@@ -12,27 +33,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.hamcrest.Matcher;
-import org.junit.Test;
-
-import com.buschmais.jqassistant.core.analysis.api.Result;
-import com.buschmais.jqassistant.core.analysis.api.rule.Constraint;
-import com.buschmais.jqassistant.plugin.common.api.model.PropertyDescriptor;
-import com.buschmais.jqassistant.plugin.java.test.AbstractJavaPluginIT;
-import com.buschmais.jqassistant.plugin.jpa2.api.model.PersistenceUnitDescriptor;
-import com.buschmais.jqassistant.plugin.jpa2.api.model.PersistenceXmlDescriptor;
-import com.buschmais.jqassistant.plugin.jpa2.test.matcher.PersistenceUnitMatcher;
-import com.buschmais.jqassistant.plugin.jpa2.test.set.entity.JpaEmbeddable;
-import com.buschmais.jqassistant.plugin.jpa2.test.set.entity.JpaEntity;
-import com.buschmais.jqassistant.plugin.jpa2.test.set.entity.SingleNamedQueryEntity;
 
 /**
  * Tests for the JPA concepts.
