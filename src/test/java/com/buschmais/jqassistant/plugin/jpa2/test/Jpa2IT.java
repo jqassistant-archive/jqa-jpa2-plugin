@@ -134,10 +134,10 @@ public class Jpa2IT extends AbstractJavaPluginIT {
         assertThat((String) row.get("name"), equalTo(name));
         assertThat((String) row.get("query"), equalTo(query));
     }
-    
+
     /**
      * Verifies the uniqueness of concept "jpa2:NamedQuery" with keeping existing properties.
-     * 
+     *
      * @throws java.io.IOException
      *             If the test fails.
      */
@@ -161,7 +161,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
 
     /**
      * Verifies the uniqueness of concept "jpa2:NamedQuery" with keeping existing properties.
-     * 
+     *
      * @throws java.io.IOException
      *             If the test fails.
      */
@@ -185,7 +185,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
 
     /**
      * Verifies the uniqueness of concept "jpa2:NamedQuery" with keeping existing properties.
-     * 
+     *
      * @throws java.io.IOException
      *             If the test fails.
      */
@@ -333,7 +333,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_0/minimal"));
         assertThat(validateConstraint("jpa2:ValidationModeMustBeExplicitlySpecified").getStatus(), equalTo(FAILURE));
         store.beginTransaction();
-        List<Result<Constraint>> constraintViolations = new ArrayList<>(reportWriter.getConstraintResults().values());
+        List<Result<Constraint>> constraintViolations = new ArrayList<>(reportPlugin.getConstraintResults().values());
         Matcher<Iterable<? super Result<Constraint>>> matcher = hasItem(result(constraint("jpa2:ValidationModeMustBeExplicitlySpecified")));
         assertThat(constraintViolations, matcher);
         assertThat(constraintViolations.size(), equalTo(1));
@@ -347,7 +347,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_1/minimal"));
         assertThat(validateConstraint("jpa2:ValidationModeMustBeExplicitlySpecified").getStatus(), equalTo(FAILURE));
         store.beginTransaction();
-        List<Result<Constraint>> constraintViolations = new ArrayList<>(reportWriter.getConstraintResults().values());
+        List<Result<Constraint>> constraintViolations = new ArrayList<>(reportPlugin.getConstraintResults().values());
         Matcher<Iterable<? super Result<Constraint>>> matcher = hasItem(result(constraint("jpa2:ValidationModeMustBeExplicitlySpecified")));
         assertThat(constraintViolations, matcher);
         assertThat(constraintViolations.size(), equalTo(1));
@@ -367,7 +367,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_0/full"));
         assertThat(validateConstraint("jpa2:ValidationModeMustBeExplicitlySpecified").getStatus(), equalTo(FAILURE));
         store.beginTransaction();
-        List<Result<Constraint>> constraintViolations = new ArrayList<>(reportWriter.getConstraintResults().values());
+        List<Result<Constraint>> constraintViolations = new ArrayList<>(reportPlugin.getConstraintResults().values());
         Matcher<Iterable<? super Result<Constraint>>> matcher = hasItem(result(constraint("jpa2:ValidationModeMustBeExplicitlySpecified")));
         assertThat(constraintViolations, matcher);
         assertThat(constraintViolations.size(), equalTo(1));
@@ -381,7 +381,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_1/full"));
         assertThat(validateConstraint("jpa2:ValidationModeMustBeExplicitlySpecified").getStatus(), equalTo(FAILURE));
         store.beginTransaction();
-        List<Result<Constraint>> constraintViolations = new ArrayList<>(reportWriter.getConstraintResults().values());
+        List<Result<Constraint>> constraintViolations = new ArrayList<>(reportPlugin.getConstraintResults().values());
         Matcher<Iterable<? super Result<Constraint>>> matcher = hasItem(result(constraint("jpa2:ValidationModeMustBeExplicitlySpecified")));
         assertThat(constraintViolations, matcher);
         assertThat(constraintViolations.size(), equalTo(1));
@@ -401,7 +401,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_1/validationmode"));
         assertThat(validateConstraint("jpa2:ValidationModeMustBeExplicitlySpecified").getStatus(), equalTo(SUCCESS));
         store.beginTransaction();
-        List<Result<Constraint>> constraintViolations = new ArrayList<>(reportWriter.getConstraintResults().values());
+        List<Result<Constraint>> constraintViolations = new ArrayList<>(reportPlugin.getConstraintResults().values());
         assertThat(constraintViolations.size(), equalTo(1));
         Result<Constraint> constraintResult = constraintViolations.get(0);
         assertThat(constraintResult.isEmpty(), equalTo(true));
@@ -413,13 +413,13 @@ public class Jpa2IT extends AbstractJavaPluginIT {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_0/validationmode"));
         assertThat(validateConstraint("jpa2:ValidationModeMustBeExplicitlySpecified").getStatus(), equalTo(SUCCESS));
         store.beginTransaction();
-        List<Result<Constraint>> constraintViolations = new ArrayList<>(reportWriter.getConstraintResults().values());
+        List<Result<Constraint>> constraintViolations = new ArrayList<>(reportPlugin.getConstraintResults().values());
         assertThat(constraintViolations.size(), equalTo(1));
         Result<Constraint> constraintResult = constraintViolations.get(0);
         assertThat(constraintResult.isEmpty(), equalTo(true));
         store.commitTransaction();
     }
-    
+
     /**
      * Verifies a unique NamedQuery with property.
      * @param queryName The query name.
