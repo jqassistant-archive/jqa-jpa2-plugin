@@ -22,14 +22,16 @@ import com.buschmais.jqassistant.plugin.java.api.scanner.TypeResolver;
 import com.buschmais.jqassistant.plugin.jpa2.api.model.PersistenceUnitDescriptor;
 import com.buschmais.jqassistant.plugin.jpa2.api.model.PersistenceXmlDescriptor;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.invocation.InvocationOnMock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 import org.mockito.stubbing.Answer;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -43,7 +45,8 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-@RunWith(MockitoJUnitRunner.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
+@ExtendWith(MockitoExtension.class)
 public class PersistenceXmlScannerPluginTest {
 
     private static PersistenceXmlScannerPlugin plugin;
@@ -101,13 +104,13 @@ public class PersistenceXmlScannerPluginTest {
 
     private String path = "/META-INF/persistence.xml";
 
-    @Before
+    @BeforeEach
     public void createScanner() {
         plugin = new PersistenceXmlScannerPlugin();
         plugin.initialize();
     }
 
-    @Before
+    @BeforeEach
     public void configureMocks() throws IOException {
         doReturn(persistenceEntities).when(unitDescriptor).getContains();
         doReturn(store).when(context).getStore();
