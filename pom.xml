@@ -33,9 +33,9 @@
     </description>
 
     <scm>
-        <connection>scm:git:git@github.com:buschmais/jqa-jpa2-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:buschmais/jqa-jpa2-plugin.git</developerConnection>
-        <url>https://github.com/buschmais/jqa-jpa2-plugin</url>
+        <connection>scm:git:git@github.com:jqassistant/jqa-jpa2-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:jqassistant/jqa-jpa2-plugin.git</developerConnection>
+        <url>https://github.com/jqassistant/jqa-jpa2-plugin</url>
       <tag>1.3</tag>
   </scm>
 
