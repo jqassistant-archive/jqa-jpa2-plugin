@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.buschmais.jqassistant.core.analysis.api.Result;
+import com.buschmais.jqassistant.core.report.api.model.Result;
 import com.buschmais.jqassistant.core.rule.api.model.Constraint;
 import com.buschmais.jqassistant.plugin.common.api.model.PropertyDescriptor;
 import com.buschmais.jqassistant.plugin.java.test.AbstractJavaPluginIT;
@@ -21,10 +21,10 @@ import com.buschmais.jqassistant.plugin.jpa2.test.set.entity.SingleNamedQueryEnt
 import org.hamcrest.Matcher;
 import org.junit.jupiter.api.Test;
 
-import static com.buschmais.jqassistant.core.analysis.api.Result.Status.FAILURE;
-import static com.buschmais.jqassistant.core.analysis.api.Result.Status.SUCCESS;
 import static com.buschmais.jqassistant.core.analysis.test.matcher.ConstraintMatcher.constraint;
 import static com.buschmais.jqassistant.core.analysis.test.matcher.ResultMatcher.result;
+import static com.buschmais.jqassistant.core.report.api.model.Result.Status.FAILURE;
+import static com.buschmais.jqassistant.core.report.api.model.Result.Status.SUCCESS;
 import static com.buschmais.jqassistant.plugin.java.test.matcher.FieldDescriptorMatcher.fieldDescriptor;
 import static com.buschmais.jqassistant.plugin.java.test.matcher.MethodDescriptorMatcher.methodDescriptor;
 import static com.buschmais.jqassistant.plugin.java.test.matcher.TypeDescriptorMatcher.typeDescriptor;
