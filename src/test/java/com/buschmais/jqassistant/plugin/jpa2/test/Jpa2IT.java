@@ -31,8 +31,8 @@ import static com.buschmais.jqassistant.plugin.java.test.matcher.TypeDescriptorM
 import static com.buschmais.jqassistant.plugin.java.test.matcher.ValueDescriptorMatcher.valueDescriptor;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItem;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.empty;
+import static org.junit.Assert.*;
 
 /**
  * Tests for the JPA concepts.
@@ -429,24 +429,24 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      * @param withoutQueryCount The number of nodes without the query attribute.
      */
     private void verifyUniqueRelation(String queryName, String query, int relationCount, int withQueryCount, int withoutQueryCount) {
-    	List<Object> column = query("MATCH ()-[r:DEFINES]->(:Jpa:NamedQuery) RETURN r").getColumn("r");
+        TestResult result = query("MATCH ()-[r:DEFINES]->(:Jpa:NamedQuery) RETURN r");
     	if (relationCount == 0) {
-    		assertNull(column);
+    		assertThat(result.getRows(), empty());
     	} else {
-    		assertThat(column.size(), equalTo(relationCount));
+    		assertThat(result.getColumn("r").size(), equalTo(relationCount));
     	}
     	assertThat(query("MATCH (q:Jpa:NamedQuery {prop: 'value'}) RETURN q").getColumn("q").size(), equalTo(2));
-    	column = query("MATCH ()-[:DEFINES]->(q:Jpa:NamedQuery {name: '" + queryName + "', query: '" + query + "'}) RETURN q").getColumn("q");
+    	result = query("MATCH ()-[:DEFINES]->(q:Jpa:NamedQuery {name: '" + queryName + "', query: '" + query + "'}) RETURN q");
     	if (withQueryCount == 0) {
-    		assertNull(column);
+            assertThat(result.getRows(), empty());
     	} else {
-    		assertThat(column.size(), equalTo(withQueryCount));
+    		assertThat(result.getColumn("q").size(), equalTo(withQueryCount));
     	}
-    	column = query("MATCH (q:Jpa:NamedQuery {name: '" + queryName + "'}) WHERE q.query IS NULL RETURN q").getColumn("q");
+    	result = query("MATCH (q:Jpa:NamedQuery {name: '" + queryName + "'}) WHERE q.query IS NULL RETURN q");
     	if (withoutQueryCount == 0) {
-    		assertNull(column);
+            assertThat(result.getRows(), empty());
     	} else {
-    		assertThat(column.size(), equalTo(withoutQueryCount));
+    		assertThat(result.getColumn("q").size(), equalTo(withoutQueryCount));
     	}
     }
 }
