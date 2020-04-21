@@ -32,7 +32,7 @@ import static com.buschmais.jqassistant.plugin.java.test.matcher.ValueDescriptor
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.Matchers.empty;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * Tests for the JPA concepts.
@@ -127,7 +127,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
     private void verifyNamedQuery(Class<?> entity, String name, String query) {
         Map<String, Object> params = new HashMap<>();
         params.put("entity", entity.getName());
-        TestResult result = query("MATCH (e:Entity {fqn:{entity}})-[:DEFINES]->(n:Jpa:NamedQuery) RETURN n.name as name, n.query as query", params);
+        TestResult result = query("MATCH (e:Entity {fqn:$entity})-[:DEFINES]->(n:Jpa:NamedQuery) RETURN n.name as name, n.query as query", params);
         List<Map<String, Object>> rows = result.getRows();
         assertThat(rows.size(), equalTo(1));
         Map<String, Object> row = rows.get(0);
