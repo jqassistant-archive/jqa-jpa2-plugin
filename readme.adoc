@@ -1,7 +1,5 @@
 = jQAssistant JPA 2 Plugin
 
-image::https://github.com/jQAssistant/jqa-jpa2-plugin/workflows/jQA%20Standard%20CI%20Build/badge.svg[jQA Standard CI Build]
-
 This is the JPA 2 Plugin of https://www.jqassistant.org[jQAssistant^].
 It enables jQAssistant to scan and to analyze JPA related
 artifacts like:
