@@ -47,7 +47,7 @@ import static org.mockito.Mockito.verify;
 
 @MockitoSettings(strictness = Strictness.LENIENT)
 @ExtendWith(MockitoExtension.class)
-public class PersistenceXmlScannerPluginTest {
+class PersistenceXmlScannerPluginTest {
 
     private static PersistenceXmlScannerPlugin plugin;
 
@@ -111,7 +111,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @BeforeEach
-    public void configureMocks() throws IOException {
+    void configureMocks() throws IOException {
         doReturn(persistenceEntities).when(unitDescriptor).getContains();
         doReturn(store).when(context).getStore();
 
@@ -160,7 +160,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerAcceptsIfInClasspathScope() throws IOException {
+    void scannerAcceptsIfInClasspathScope() throws IOException {
         FileResource item = Mockito.mock(FileResource.class, new MethodNotMockedAnswer());
         String path = "/META-INF/persistence.xml";
         Scope scope = JavaScope.CLASSPATH;
@@ -169,7 +169,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerAcceptsIfPersistenceXMLIsInMETAINF() throws Exception {
+    void scannerAcceptsIfPersistenceXMLIsInMETAINF() throws Exception {
         FileResource item = Mockito.mock(FileResource.class, new MethodNotMockedAnswer());
         String path = "/META-INF/persistence.xml";
         Scope scope = JavaScope.CLASSPATH;
@@ -179,7 +179,7 @@ public class PersistenceXmlScannerPluginTest {
 
 
     @Test
-    public void scannerAcceptsIfPersistenceXMLIsInWEBINF() throws Exception {
+    void scannerAcceptsIfPersistenceXMLIsInWEBINF() throws Exception {
         FileResource item = Mockito.mock(FileResource.class, new MethodNotMockedAnswer());
         String path = "/WEB-INF/persistence.xml";
         Scope scope = JavaScope.CLASSPATH;
@@ -188,7 +188,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerFindAllPropertisInPersistenceXMLV20() throws IOException {
+    void scannerFindAllPropertisInPersistenceXMLV20() throws IOException {
         plugin.scan(item4V20, path, JavaScope.CLASSPATH, scanner);
 
         Mockito.verify(store, times(1)).create(PropertyDescriptor.class);
@@ -198,7 +198,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerFindAllPropertisInPersistenceXMLV21() throws IOException {
+    void scannerFindAllPropertisInPersistenceXMLV21() throws IOException {
         plugin.scan(item4V21, path, JavaScope.CLASSPATH, scanner);
 
         Mockito.verify(store, times(1)).create(PropertyDescriptor.class);
@@ -208,21 +208,21 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerFindVersionInPersistenceXMLV20() throws IOException {
+    void scannerFindVersionInPersistenceXMLV20() throws IOException {
         plugin.scan(item4V20, path, JavaScope.CLASSPATH, scanner);
 
         Mockito.verify(persistenceDescriptor).setVersion(eq("2.0"));
     }
 
     @Test
-    public void scannerFindVersionInPersistenceXMLV21() throws IOException {
+    void scannerFindVersionInPersistenceXMLV21() throws IOException {
         plugin.scan(item4V21, path, JavaScope.CLASSPATH, scanner);
 
         Mockito.verify(persistenceDescriptor).setVersion(eq("2.1"));
     }
 
     @Test
-    public void scannerFindsOnePersistenceUnitInPersistenceXMLV20() throws IOException {
+    void scannerFindsOnePersistenceUnitInPersistenceXMLV20() throws IOException {
 
         plugin.scan(item4V20, path, JavaScope.CLASSPATH, scanner);
 
@@ -230,7 +230,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerFindsOnePersistenceUnitInPersistenceXMLV21() throws IOException {
+    void scannerFindsOnePersistenceUnitInPersistenceXMLV21() throws IOException {
 
         plugin.scan(item4V21, path, JavaScope.CLASSPATH, scanner);
 
@@ -238,7 +238,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectNameForPersistenceUnitInPersistenceXMLV20() throws IOException {
+    void scannerSetsCorrectNameForPersistenceUnitInPersistenceXMLV20() throws IOException {
         plugin.scan(item4V20, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be on persistence unit.", persistenceUnitList, hasSize(1));
@@ -247,7 +247,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectNameForPersistenceUnitInPersistenceXMLV21() throws IOException {
+    void scannerSetsCorrectNameForPersistenceUnitInPersistenceXMLV21() throws IOException {
         plugin.scan(item4V21, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be on persistence unit.", persistenceUnitList, hasSize(1));
@@ -256,7 +256,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetcCorrectTransactionTypeForPersistenceUnitInPersistenceXMLV20() throws IOException {
+    void scannerSetcCorrectTransactionTypeForPersistenceUnitInPersistenceXMLV20() throws IOException {
         plugin.scan(item4V20, path, JavaScope.CLASSPATH, scanner);
 
         assertThat(persistenceUnitList, hasSize(1));
@@ -264,7 +264,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetcCorrectTransactionTypeForPersistenceUnitInPersistenceXMLV21() throws IOException {
+    void scannerSetcCorrectTransactionTypeForPersistenceUnitInPersistenceXMLV21() throws IOException {
         plugin.scan(item4V21, path, JavaScope.CLASSPATH, scanner);
 
         assertThat(persistenceUnitList, hasSize(1));
@@ -272,7 +272,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectDescriptionFoundInPersistenceUnitInPersistenceXMLV20() throws IOException {
+    void scannerSetsCorrectDescriptionFoundInPersistenceUnitInPersistenceXMLV20() throws IOException {
         plugin.scan(item4V20, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be one persistence unit.", persistenceUnitList, hasSize(1));
@@ -280,7 +280,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectDescriptionFoundInPersistenceUnitInPersistenceXMLV21() throws IOException {
+    void scannerSetsCorrectDescriptionFoundInPersistenceUnitInPersistenceXMLV21() throws IOException {
         plugin.scan(item4V21, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be one persistence unit.", persistenceUnitList, hasSize(1));
@@ -288,7 +288,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectJTADataSourceFromPersistenceUnitInPersistenceXMLV20() throws IOException {
+    void scannerSetsCorrectJTADataSourceFromPersistenceUnitInPersistenceXMLV20() throws IOException {
         plugin.scan(item4V20, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be one persistence unit.", persistenceUnitList, hasSize(1));
@@ -296,7 +296,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectJTADataSourceFromPersistenceUnitInPersistenceXMLV21() throws IOException {
+    void scannerSetsCorrectJTADataSourceFromPersistenceUnitInPersistenceXMLV21() throws IOException {
         plugin.scan(item4V21, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be one persistence unit.", persistenceUnitList, hasSize(1));
@@ -304,7 +304,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectNonJTADataSourceFromPersistenceUnitInPersistenceXMLV20() throws IOException {
+    void scannerSetsCorrectNonJTADataSourceFromPersistenceUnitInPersistenceXMLV20() throws IOException {
         plugin.scan(item4V20, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be one persistence unit.", persistenceUnitList, hasSize(1));
@@ -312,7 +312,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectNonJTADataSourceFromPersistenceUnitInPersistenceXMLV21() throws IOException {
+    void scannerSetsCorrectNonJTADataSourceFromPersistenceUnitInPersistenceXMLV21() throws IOException {
         plugin.scan(item4V21, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be one persistence unit.", persistenceUnitList, hasSize(1));
@@ -320,7 +320,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectProviderFromPersistenceUnitInPersistenceXMLV20() throws IOException {
+    void scannerSetsCorrectProviderFromPersistenceUnitInPersistenceXMLV20() throws IOException {
         plugin.scan(item4V20, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be one persistence unit.", persistenceUnitList, hasSize(1));
@@ -328,7 +328,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectProviderFromPersistenceUnitInPersistenceXMLV21() throws IOException {
+    void scannerSetsCorrectProviderFromPersistenceUnitInPersistenceXMLV21() throws IOException {
         plugin.scan(item4V21, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be one persistence unit.", persistenceUnitList, hasSize(1));
@@ -336,7 +336,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectValidationModeFromPersistenceUnitInPersistenceXMLV20() throws IOException {
+    void scannerSetsCorrectValidationModeFromPersistenceUnitInPersistenceXMLV20() throws IOException {
         plugin.scan(item4V20, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be one persistence unit.", persistenceUnitList, hasSize(1));
@@ -344,7 +344,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectValidationModeFromPersistenceUnitInPersistenceXMLV21() throws IOException {
+    void scannerSetsCorrectValidationModeFromPersistenceUnitInPersistenceXMLV21() throws IOException {
         plugin.scan(item4V21, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be one persistence unit.", persistenceUnitList, hasSize(1));
@@ -352,7 +352,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectSharedCacheModeFromPersistenceUnitInPersistenceXMLV20() throws IOException {
+    void scannerSetsCorrectSharedCacheModeFromPersistenceUnitInPersistenceXMLV20() throws IOException {
         plugin.scan(item4V20, path, JavaScope.CLASSPATH, scanner);
 
         assertThat(persistenceUnitList, hasSize(1));
@@ -360,7 +360,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsCorrectSharedCacheModeFromPersistenceUnitInPersistenceXMLV21() throws IOException {
+    void scannerSetsCorrectSharedCacheModeFromPersistenceUnitInPersistenceXMLV21() throws IOException {
         plugin.scan(item4V21, path, JavaScope.CLASSPATH, scanner);
 
         assertThat(persistenceUnitList, hasSize(1));
@@ -369,7 +369,7 @@ public class PersistenceXmlScannerPluginTest {
 
 
     @Test
-    public void scannerAddsAllClasseseFromPersistenceUnitInPersistenceXMLV20() throws IOException {
+    void scannerAddsAllClasseseFromPersistenceUnitInPersistenceXMLV20() throws IOException {
         plugin.scan(item4V20, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be unit persistence unit.", persistenceUnitList, hasSize(1));
@@ -378,7 +378,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerAddsAllClasseseFromPersistenceUnitInPersistenceXMLV21() throws IOException {
+    void scannerAddsAllClasseseFromPersistenceUnitInPersistenceXMLV21() throws IOException {
         plugin.scan(item4V21, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be unit persistence unit.", persistenceUnitList, hasSize(1));
@@ -387,7 +387,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsExcludeUnlistedClassesToTrueIfNotSpecifiedXMLV20() throws Exception {
+    void scannerSetsExcludeUnlistedClassesToTrueIfNotSpecifiedXMLV20() throws Exception {
         plugin.scan(itemMinimal4V20, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be unit persistence unit.", persistenceUnitList, hasSize(1));
@@ -395,7 +395,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsExcludeUnlistedClassesToTrueIfNotSpecifiedXMLV21() throws Exception {
+    void scannerSetsExcludeUnlistedClassesToTrueIfNotSpecifiedXMLV21() throws Exception {
         plugin.scan(itemMinimal4V21, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be unit persistence unit.", persistenceUnitList, hasSize(1));
@@ -403,7 +403,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsExcludeUnlistedClassesAsSpecifiedXMLV20() throws Exception {
+    void scannerSetsExcludeUnlistedClassesAsSpecifiedXMLV20() throws Exception {
         plugin.scan(item4V20, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be unit persistence unit.", persistenceUnitList, hasSize(1));
@@ -411,7 +411,7 @@ public class PersistenceXmlScannerPluginTest {
     }
 
     @Test
-    public void scannerSetsExcludeUnlistedClassesAsSpecifiedXMLV21() throws Exception {
+    void scannerSetsExcludeUnlistedClassesAsSpecifiedXMLV21() throws Exception {
         plugin.scan(item4V21, path, JavaScope.CLASSPATH, scanner);
 
         assertThat("There must be unit persistence unit.", persistenceUnitList, hasSize(1));

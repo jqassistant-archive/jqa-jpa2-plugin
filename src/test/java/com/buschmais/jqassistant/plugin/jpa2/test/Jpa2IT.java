@@ -37,7 +37,7 @@ import static org.hamcrest.Matchers.empty;
 /**
  * Tests for the JPA concepts.
  */
-public class Jpa2IT extends AbstractJavaPluginIT {
+class Jpa2IT extends AbstractJavaPluginIT {
 
     public static final String SCHEMA_2_0 = "2.0";
     public static final String SCHEMA_2_1 = "2.1";
@@ -48,7 +48,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      * @throws java.io.IOException                                           If the test fails.
      */
     @Test
-    public void entity() throws Exception {
+    void entity() throws Exception {
         scanClasses(JpaEntity.class);
         assertThat(applyConcept("jpa2:Entity").getStatus(), equalTo(SUCCESS));
         store.beginTransaction();
@@ -62,7 +62,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      * @throws java.io.IOException                                           If the test fails.
      */
     @Test
-    public void embeddable() throws Exception {
+    void embeddable() throws Exception {
         scanClasses(JpaEmbeddable.class);
         assertThat(applyConcept("jpa2:Embeddable").getStatus(), equalTo(SUCCESS));
         store.beginTransaction();
@@ -76,7 +76,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      * @throws java.io.IOException                                           If the test fails.
      */
     @Test
-    public void embedded() throws Exception {
+    void embedded() throws Exception {
         scanClasses(JpaEntity.class);
         assertThat(applyConcept("jpa2:Embedded").getStatus(), equalTo(SUCCESS));
         store.beginTransaction();
@@ -92,7 +92,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      * @throws java.io.IOException                                           If the test fails.
      */
     @Test
-    public void embeddedId() throws Exception {
+    void embeddedId() throws Exception {
         scanClasses(JpaEntity.class);
         assertThat(applyConcept("jpa2:EmbeddedId").getStatus(), equalTo(SUCCESS));
         store.beginTransaction();
@@ -108,7 +108,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      * @throws java.io.IOException                                           If the test fails.
      */
     @Test
-    public void namedQueries() throws Exception {
+    void namedQueries() throws Exception {
         scanClasses(JpaEntity.class, SingleNamedQueryEntity.class);
         assertThat(applyConcept("jpa2:NamedQuery").getStatus(), equalTo(SUCCESS));
         store.beginTransaction();
@@ -142,7 +142,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      *             If the test fails.
      */
     @Test
-    public void namedQueryUniqueDifferentQuery() throws Exception {
+    void namedQueryUniqueDifferentQuery() throws Exception {
         scanClasses(JpaEntity.class, SingleNamedQueryEntity.class);
         assertThat(applyConcept("jpa2:Entity").getStatus(), equalTo(SUCCESS));
         store.beginTransaction();
@@ -166,7 +166,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      *             If the test fails.
      */
     @Test
-    public void namedQueryUniqueSameQuery() throws Exception {
+    void namedQueryUniqueSameQuery() throws Exception {
         scanClasses(JpaEntity.class, SingleNamedQueryEntity.class);
         assertThat(applyConcept("jpa2:Entity").getStatus(), equalTo(SUCCESS));
         store.beginTransaction();
@@ -190,7 +190,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      *             If the test fails.
      */
     @Test
-    public void namedQueryUniqueWithoutQuery() throws Exception {
+    void namedQueryUniqueWithoutQuery() throws Exception {
         scanClasses(JpaEntity.class, SingleNamedQueryEntity.class);
         assertThat(applyConcept("jpa2:Entity").getStatus(), equalTo(SUCCESS));
         store.beginTransaction();
@@ -213,7 +213,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      * @throws java.io.IOException If the test fails.
      */
     @Test
-    public void fullPersistenceDescriptorV20() throws IOException {
+    void fullPersistenceDescriptorV20() throws IOException {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_0/full"));
         store.beginTransaction();
         TestResult testResult = query("MATCH (p:Jpa:Persistence:Xml) RETURN p");
@@ -227,7 +227,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
     }
 
     @Test
-    public void fullPersistenceDescriptorV21() throws IOException {
+    void fullPersistenceDescriptorV21() throws IOException {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_1/full"));
         store.beginTransaction();
         TestResult testResult = query("MATCH (p:Jpa:Persistence:Xml) RETURN p");
@@ -246,7 +246,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      * @throws java.io.IOException                                           If the test fails.
      */
     @Test
-    public void fullPersistenceUnitDescriptorV21() throws IOException {
+    void fullPersistenceUnitDescriptorV21() throws IOException {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_1/full"));
         store.beginTransaction();
         TestResult testResult = query("MATCH (pu:Jpa:PersistenceUnit) RETURN pu");
@@ -268,7 +268,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
     }
 
     @Test
-    public void fullPersistenceUnitDescriptorV20() throws IOException {
+    void fullPersistenceUnitDescriptorV20() throws IOException {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_0/full"));
         store.beginTransaction();
         TestResult testResult = query("MATCH (pu:Jpa:PersistenceUnit) RETURN pu");
@@ -295,7 +295,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      * @throws java.io.IOException                                           If the test fails.
      */
     @Test
-    public void minimalPersistenceDescriptorV21() throws IOException {
+    void minimalPersistenceDescriptorV21() throws IOException {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_1/minimal"));
         store.beginTransaction();
         TestResult testResult = query("MATCH (p:Jpa:Persistence:Xml) RETURN p");
@@ -309,7 +309,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
     }
 
     @Test
-    public void minimalPersistenceDescriptorV20() throws IOException {
+    void minimalPersistenceDescriptorV20() throws IOException {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_0/minimal"));
         store.beginTransaction();
         TestResult testResult = query("MATCH (p:Jpa:Persistence:Xml) RETURN p");
@@ -329,7 +329,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      * @throws java.io.IOException                                           If the test fails.
      */
     @Test
-    public void validationModeNotSpecifiedV20() throws Exception {
+    void validationModeNotSpecifiedV20() throws Exception {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_0/minimal"));
         assertThat(validateConstraint("jpa2:ValidationModeMustBeExplicitlySpecified").getStatus(), equalTo(FAILURE));
         store.beginTransaction();
@@ -343,7 +343,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
     }
 
     @Test
-    public void validationModeNotSpecifiedV21() throws Exception {
+    void validationModeNotSpecifiedV21() throws Exception {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_1/minimal"));
         assertThat(validateConstraint("jpa2:ValidationModeMustBeExplicitlySpecified").getStatus(), equalTo(FAILURE));
         store.beginTransaction();
@@ -363,7 +363,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      * @throws java.io.IOException                                           If the test fails.
      */
     @Test
-    public void validationModeAutoV20() throws Exception {
+    void validationModeAutoV20() throws Exception {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_0/full"));
         assertThat(validateConstraint("jpa2:ValidationModeMustBeExplicitlySpecified").getStatus(), equalTo(FAILURE));
         store.beginTransaction();
@@ -377,7 +377,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
     }
 
     @Test
-    public void validationModeAutoV21() throws Exception {
+    void validationModeAutoV21() throws Exception {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_1/full"));
         assertThat(validateConstraint("jpa2:ValidationModeMustBeExplicitlySpecified").getStatus(), equalTo(FAILURE));
         store.beginTransaction();
@@ -397,7 +397,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
      * @throws java.io.IOException                                           If the test fails.
      */
     @Test
-    public void validationModeSpecifiedV21() throws Exception {
+    void validationModeSpecifiedV21() throws Exception {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_1/validationmode"));
         assertThat(validateConstraint("jpa2:ValidationModeMustBeExplicitlySpecified").getStatus(), equalTo(SUCCESS));
         store.beginTransaction();
@@ -409,7 +409,7 @@ public class Jpa2IT extends AbstractJavaPluginIT {
     }
 
     @Test
-    public void validationModeSpecifiedV20() throws Exception {
+    void validationModeSpecifiedV20() throws Exception {
         scanClassPathDirectory(new File(getClassesDirectory(JpaEntity.class), "2_0/validationmode"));
         assertThat(validateConstraint("jpa2:ValidationModeMustBeExplicitlySpecified").getStatus(), equalTo(SUCCESS));
         store.beginTransaction();
